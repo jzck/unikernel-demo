@@ -13,5 +13,11 @@ all:
 qemu: ../../disk.img
 	qemu-system-x86_64 -enable-kvm -s -m 1G -nographic -cpu host\
 		-kernel ../../../whiterose/arch/x86/boot/bzImage\
+		-append "console=ttyS0 ukl-hybrid quiet root=/dev/sda"\
+		-hda ../../disk.img
+
+qemu-ukl: ../../disk.img
+	qemu-system-x86_64 -enable-kvm -s -m 1G -nographic -cpu host\
+		-kernel ../../../whiterose/arch/x86/boot/bzImage\
 		-append "console=ttyS0 ukl quiet root=/dev/sda"\
 		-hda ../../disk.img
